@@ -55,6 +55,12 @@ Encore
         config.corejs = 3;
     })
 
+    .enablePostCssLoader((options) => {
+    // options.config = {
+    //     // directory where the postcss.config.js file is stored
+    //     path: './postcss.config.js'
+    // };
+})
     // enables Sass/SCSS support
     //.enableSassLoader()
 

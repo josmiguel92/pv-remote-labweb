@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{#
+    the homepage is a special page which displays neither a header nor a footer.
+    this is done with the 'trick' of defining empty Twig blocks without any content
+#}
+{#{% block header %}{% endblock %}#}
+{#{% block footer %}{% endblock %}#}
+
+{% block body %}
+
+
+    <div class="hero min-h-screen" style="background-image: url({{ asset('img/solar-landscape.jpg') }});">
+        <div class="hero-overlay bg-opacity-50"></div>
+        <div class="text-center hero-content text-neutral-content">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">
+                    Hello there!
+                </h1>
+                <p class="mb-5">
+                    We are building an open source solar system remote controlled laboratory.
+                </p>
+                <p class="mb-5">
+                A system that will help you to understand how a solar energy works.
+                </p>
+                <button class="btn btn-primary">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero min-h-screen bg-base-200">
+        <div class="flex-col justify-center hero-content lg:flex-row">
+            <div class="text-center lg:text-left">
+                <h1 class="mb-5 text-5xl font-bold">
+                    Hello there
+                </h1>
+                <p class="mb-5">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+                </p>
+            </div>
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div class="card-body">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="text" placeholder="email" class="input input-bordered">
+                    </div>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <input type="text" placeholder="password" class="input input-bordered">
+                        <label class="label">
+                            <a href="#" class="label-text-alt">Forgot password?</a>
+                        </label>
+                    </div>
+                    <div class="form-control mt-6">
+                        <input type="button" value="Login" class="btn btn-primary">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>{{ 'title.homepage'|trans|raw }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <p>
+                    {{ 'help.browse_app'|trans|raw }}
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('blog_index') }}">
+                        <i class="fa fa-users" aria-hidden="true"></i> {{ 'action.browse_app'|trans }}
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <p>
+                    {{ 'help.browse_admin'|trans|raw }}
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="{{ path('admin_index') }}">
+                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'action.browse_admin'|trans }}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

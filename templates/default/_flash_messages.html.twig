@@ -1,0 +1,47 @@
+{#
+   This is a template fragment designed to be included in other templates
+   See https://symfony.com/doc/current/templates.html#including-templates
+
+   A common practice to better distinguish between templates and fragments is to
+   prefix fragments with an underscore. That's why this template is called
+   '_flash_messages.html.twig' instead of 'flash_messages.html.twig'
+#}
+
+{#
+   The check is needed to prevent starting the session when looking for "flash messages":
+   https://symfony.com/doc/current/session.html#avoid-starting-sessions-for-anonymous-users
+
+   TIP: With FOSHttpCache you can also adapt this to make it cache safe:
+   https://foshttpcachebundle.readthedocs.io/en/latest/features/helpers/flash-message.html
+#}
+{% if app.request.hasPreviousSession %}
+    <div class="messages">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+
+                <div class="alert alert-{{ type }}">
+                    <div class="flex-1">
+                        {% if type == 'success' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+                            </svg>
+                        {% elseif type == 'warning' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                        {% elseif type == 'error' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                            </svg>
+                        {% elseif type == 'info' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        {% endif %}
+                        <label>{{ message|trans }}</label>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
