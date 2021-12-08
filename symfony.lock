@@ -17,6 +17,9 @@
     "composer/semver": {
         "version": "3.2.6"
     },
+    "dflydev/dot-access-data": {
+        "version": "v3.0.1"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -106,11 +109,29 @@
     "laminas/laminas-code": {
         "version": "4.4.3"
     },
+    "league/commonmark": {
+        "version": "2.1.0"
+    },
+    "league/config": {
+        "version": "v1.1.1"
+    },
+    "league/uri-parser": {
+        "version": "1.4.1"
+    },
+    "masterminds/html5": {
+        "version": "2.7.5"
+    },
     "monolog/monolog": {
         "version": "2.3.5"
     },
     "myclabs/deep-copy": {
         "version": "1.10.2"
+    },
+    "nette/schema": {
+        "version": "v1.2.2"
+    },
+    "nette/utils": {
+        "version": "v3.2.6"
     },
     "nikic/php-parser": {
         "version": "v4.13.1"
@@ -676,6 +697,21 @@
     },
     "symfony/yaml": {
         "version": "v5.4.0-BETA2"
+    },
+    "tgalopin/html-sanitizer": {
+        "version": "1.4.0"
+    },
+    "tgalopin/html-sanitizer-bundle": {
+        "version": "1.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "95b935177db9abb65356fe19e57fe5abd908b5b8"
+        },
+        "files": [
+            "config/packages/html_sanitizer.yaml"
+        ]
     },
     "theseer/tokenizer": {
         "version": "1.2.1"

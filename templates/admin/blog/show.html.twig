@@ -13,8 +13,12 @@
     <div class="well">
         <p class="m-b-0"><strong>{{ 'label.summary'|trans }}</strong>: {{ post.summary }}</p>
     </div>
+    
+    <div class="prose">
 
-    {{ post.content|markdown_to_html|sanitize_html }}
+        {{ post.content|markdown_to_html|sanitize_html }}
+
+    </div>
 
     {{ include('blog/_post_tags.html.twig') }}
 {% endblock %}
@@ -32,5 +36,4 @@
 
     {{ parent() }}
 
-    {{ show_source_code(_self) }}
 {% endblock %}
