@@ -1,6 +1,21 @@
 {
+    "baldinof/roadrunner-bundle": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "cdd398712fbc03897c0550c856df05fb9ab2b36b"
+        },
+        "files": [
+            "config/packages/baldinof_road_runner.yaml"
+        ]
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.4"
+    },
+    "composer/semver": {
+        "version": "3.2.6"
     },
     "doctrine/annotations": {
         "version": "1.13",
@@ -156,6 +171,12 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.1.1"
     },
@@ -221,6 +242,24 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "spiral/goridge": {
+        "version": "v3.1.1"
+    },
+    "spiral/roadrunner": {
+        "version": "v2.6.0"
+    },
+    "spiral/roadrunner-cli": {
+        "version": "v2.0.13"
+    },
+    "spiral/roadrunner-http": {
+        "version": "v2.0.4"
+    },
+    "spiral/roadrunner-metrics": {
+        "version": "v2.0.1"
+    },
+    "spiral/roadrunner-worker": {
+        "version": "v2.1.5"
     },
     "symfony/amqp-messenger": {
         "version": "v5.4.0-BETA2"
@@ -475,6 +514,9 @@
     "symfony/proxy-manager-bridge": {
         "version": "v5.4.0-BETA3"
     },
+    "symfony/psr-http-message-bridge": {
+        "version": "v2.1.2"
+    },
     "symfony/redis-messenger": {
         "version": "v5.4.0-BETA2"
     },
@@ -643,6 +685,9 @@
     },
     "twig/intl-extra": {
         "version": "v3.3.3"
+    },
+    "twig/markdown-extra": {
+        "version": "v3.3.4"
     },
     "twig/twig": {
         "version": "v3.3.3"

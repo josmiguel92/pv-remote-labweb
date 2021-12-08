@@ -44,12 +44,11 @@
 
 {% block sidebar %}
     <div class="section actions">
-        <a href="{{ path('admin_post_new') }}" class="btn btn-lg btn-block btn-success">
+        <a href="{{ path('admin_post_new') }}" class="btn btn-lg">
             <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_post'|trans }}
         </a>
     </div>
 
     {{ parent() }}
 
-    {{ show_source_code(_self) }}
 {% endblock %}

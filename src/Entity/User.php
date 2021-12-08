@@ -191,4 +191,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = $data;
     }
+
+    /**
+     * @return string URL for generate an unique robot like avatar per user name
+     */
+    public function getRobotAvatar(): string
+    {
+        //TODO: reset the image url
+        return 'https://robohash.org/' . hash('md5', $this->getUserIdentifier()).'?set=set1';
+//        return 'https://dash.taxidrivers.wip/build/images/team-2-800x800.3e08ef14.jpg';
+    }
+
+    public function getAvatar(): string
+    {
+         return $this->avatar ?? $this->getRobotAvatar();
+    }
 }

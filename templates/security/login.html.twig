@@ -14,30 +14,17 @@
         </div>
     {% endif %}
 
-    <div class="row">
-        <div class="col-sm-5">
-            <div class="well">
-                <form action="{{ path('security_login') }}" method="post">
-                    <fieldset>
-                        <legend><i class="fa fa-lock" aria-hidden="true"></i> {{ 'title.login'|trans }}</legend>
-                        <div class="form-group">
-                            <label for="username">{{ 'label.username'|trans }}</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">{{ 'label.password'|trans }}</label>
-                            <input type="password" id="password" name="_password" class="form-control" />
-                        </div>
-                        <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'action.sign_in'|trans }}
-                        </button>
-                    </fieldset>
-                </form>
+    <div class="">
+    
+     <div class="text-center lg:text-left">
+                <h1 class="mb-5 text-5xl font-bold">
+                    Hello there
+                </h1>
+                <p class="mb-5">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+                </p>
             </div>
-        </div>
-
+       
         <div id="login-help" class="col-sm-7">
             <h3>
                 <i class="hidden-xs fa fa-long-arrow-left" aria-hidden="true"></i>
@@ -88,6 +75,7 @@
 {% endblock %}
 
 {% block sidebar %}
-    {{ parent() }}
+   {{ include('security/_login-form.html.twig') }}
+
 
 {% endblock %}

@@ -1,0 +1,33 @@
+{% if last_username is not defined %}
+    {% set last_username = null %}
+{% endif %}
+<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <form action="{{ path('security_login') }}" method="post">
+                <div class="card-body">
+                    <div class="form-control">
+                        <label for="username" class="label">
+                            <span class="label-text">{{ 'label.username'|trans }}</span>
+                        </label>
+                        <input type="text"  id="username" name="_username" value="{{ last_username }}" placeholder="email" class="input input-bordered">
+
+                    </div>
+                    <div class="form-control">
+                        <label for="password" class="label">
+                            <span class="label-text">{{ 'label.password'|trans }}</span>
+                        </label>
+                        <input type="password" id="password" name="_password" placeholder="password" class="input input-bordered">
+
+                        <label class="label">
+                            <a href="#" class="label-text-alt">Forgot password?</a>
+                        </label>
+                    </div>
+                    <div class="form-control mt-6">
+                        <input type="submit" value="{{ 'action.sign_in'|trans }}" class="btn btn-primary">
+                    </div>
+                </div>
+                <input type="hidden" name="_target_path" value="{{ app.request.get('redirect_to') }}"/>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+    </form>
+            </div>
+
+

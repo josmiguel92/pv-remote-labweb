@@ -16,7 +16,7 @@
     <body id="{% block body_id %}{% endblock %}">
 
         {% block header %}
-            <header class="p-1 fixed z-30 w-full" data-controller="navbar">
+            <header class="p-1 px-5 fixed z-30 w-full" data-controller="navbar">
 
                 <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
                     <div class="px-2 mx-2 navbar-start">
@@ -61,42 +61,59 @@
                             </ul>
                         </div>
 
+                        {% if app.user %}
+
+                            <div class="dropdown dropdown-left">
+                                <div tabindex="0" class="m-1 btn">
+                                    <img src="{{app.user.avatar}}" class="h-10 w-10">
+                                </div> 
+                                <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 text-primary-content">
+                                <li>
+                                    <span class="text-sm text-center">{{ app.user.fullname }}</span>
+                                    
+                                </li>
+                                {% if is_granted('ROLE_ADMIN') %}
+
+                                    <li>
+                                        <a href="{{ path('admin_post_index') }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"  class="inline-block w-6 h-6 stroke-current">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+                                            </svg>
+                                            <span class="ml-2">Admin Post</span>
+                                        </a>
+                                    </li> 
+                                {% endif %}
+                                <li>
+                                    <a href="{{ path('user_edit') }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span  class="ml-2">
+                                            {{ 'menu.user'|trans }}
+                                        </span>
+                                        
+                                    </a>
+                                </li> 
+                                <li>
+                                    <a href="{{ path('security_logout') }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                        <span class="ml-2">
+                                            {{ 'menu.logout'|trans }}
+                                        </span>
+                                        
+                                    </a>
+                                </li>
+                                </ul>
+                            </div>
+                        {% endif %}
 
                         {% block header_navigation_links %}
 
-                            {% if is_granted('ROLE_ADMIN') %}
+                                                        
 
-                                <a href="{{ path('admin_post_index') }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"  class="inline-block w-6 h-6 stroke-current">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
-                                    </svg>
-                                </a>
-
-                            {% endif %}
-
-                            {% if app.user %}
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span class="caret"></span>
-                                        <span class="sr-only">{{ app.user.fullname }}</span>
-                                    </a>
-                                    <ul class="dropdown-menu user" role="menu" aria-labelledby="user">
-                                        <li>
-                                            <a href="{{ path('user_edit') }}">
-                                                <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
-                                            </a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li>
-                                            <a href="{{ path('security_logout') }}">
-                                                <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            {% endif %}
-
+                        
                         {% endblock %}
 
 
@@ -116,7 +133,7 @@
             </header>
         {% endblock %}
 
-        <div class="">
+        <div class="{% block body_class %}pt-24{% endblock %}">
             {% block body %}
                 <div class="container body-container flex mx-3">
                     <div id="main" class="w-3/4">
